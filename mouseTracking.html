@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Tracking</title>
+    <script>
+      window.addEventListener('load', app)
+
+      function app() {
+        const trackingArea = document.getElementById('tracking-area')
+        trackingArea.addEventListener('mousemove', onMouseMove)
+        function onMouseMove(e) {
+          console.log(e)
+          setPosition({ x: e.offsetX, y: e.offsetY })
+        }
+      }
+      function setPosition(position) {
+        const { x, y } = position
+        const positionElement = document.getElementById('current-position')
+        positionElement.innerHTML = `Position = x: ${x}; y: ${y}`
+      }
+    </script>
+    <style>
+      #tracking-area {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Move your mouse in the box; if it's not working, click inside the box and
+      try again.
+    </h1>
+    <h2 id="current-position">Position...</h2>
+    <div id="tracking-area"></div>
+  </body>
+</html>
